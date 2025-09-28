@@ -1,0 +1,46 @@
+{% extends "collection/base.html" %}
+
+{% block title %}Stock List{% endblock %}
+
+{% block content %}
+    <h2>Stock List</h2>
+
+    <!-- Search Form -->
+    <form method="get" action="{% url 'list_stock' %}" class="form-card">
+        <input type="text" name="q" placeholder="Search stock by name..." value="{{ query }}">
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <table class="stock-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Price</th>
+                {% if user.is_superuser %}
+                    <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.name }}</td>
+                    <td>{{ stock.unit }}</td>
+                    <td>GH₵{{ stock.price }}</td>
+
+                    {% if user.is_superuser %}
+                        <td>
+                            <a href="{% url 'edit_stock' stock.pk %}" class="btn warning">Edit</a>  
+                            <a href="{% url 'delete_stock' stock.pk %}" class="btn danger">Delete</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No stocks available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

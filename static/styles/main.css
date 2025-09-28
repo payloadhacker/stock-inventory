@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* navbar */
+.navbar {
+  background: #222;
+  padding: 1rem;
+  color: #fff;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar .logo {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links a, .username {
+  margin-left: 1rem;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* content */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* forms */
+.form-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-card label {
+  font-weight: bold;
+  display: block;
+  margin-top: 1rem;
+}
+
+.form-card input,
+.form-card select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* buttons */
+.btn {
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  background: #007BFF;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.btn.warning { background: #ffc107; color: #222; }
+.btn.warning:hover { background: #e0a800; }
+.btn.danger { background: #dc3545; }
+.btn.danger:hover { background: #a71d2a; }
+
+/* table styling */
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.stock-table th,
+.stock-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.stock-table th {
+  background: #eee;
+}
+
+
+@media (max-width: 768px) {
+
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    margin-top: 0.5rem;
+  }
+
+  .container {
+    padding: 0.5rem;
+    margin: 1rem auto;
+  }
+
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+
+  .stock-table,
+  .stock-table thead,
+  .stock-table tbody,
+  .stock-table th,
+  .stock-table td,
+  .stock-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .stock-table thead {
+    display: none; /* hide table headers */
+  }
+
+  .stock-table tr {
+    margin-bottom: 1rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .stock-table td {
+    border: none;
+    padding: 0.5rem 0;
+    text-align: left;
+  }
+
+  .stock-table td::before {
+    content: attr(data-label); /* show column name before value */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #555;
+  }
+}

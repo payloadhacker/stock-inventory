@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="'eng">
+<head>
+    <title>{% block title %}Stock App{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'home' %}" class="logo">Inventory</a>
+            <div class="nav-links">
+                <a href="{% url 'list_stock' %}">View Stocks</a>
+                {%if user.is_authenticated %}
+                <span class="username">Hello, {{ user.username }}</span>
+                <a href="{% url 'logout' %}" class="btn warning"> logout</a>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+    
+
+            </div>
+        </div>  
+    </nav>
+
+    <main class="containt">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %} 
+
+
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Stock App</p>
+    </footer>
+</body>
+</html>

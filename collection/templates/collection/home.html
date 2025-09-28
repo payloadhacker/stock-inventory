@@ -1,0 +1,25 @@
+{% extends "collection/base.html" %}
+
+{% block title %}Add Stock{% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="form-card">
+            <h2>Add Stock</h2>
+            <form method="post">
+                {% csrf_token %}
+                <label for="id_name">Stock Name</label>
+                {{ form.name}}
+
+                <label  for="id_unit"> Units</label>
+                {{form.unit }}
+
+                <label for="id_price"> Price</label>
+                {{ form.price }}
+
+                <button type="submit" class="btn">Save</button>
+            </form>
+        </div>
+</div>
+    
+{% endblock %}
