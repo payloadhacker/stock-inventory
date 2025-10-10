@@ -81,8 +81,6 @@ def list_stock(request):
 
 @staff_member_required(login_url='login')
 def edit_stock(request, pk):
-
-    context = {}
     Stock = get_object_or_404(stock, pk=pk)
     form = StockForm(request.POST or None, instance=Stock)
 
